@@ -21,10 +21,7 @@ export default function BudgetPlanner() {
       setLoading(true);
       const data = await budgetAPI.getExpenses();
       console.log('Expenses API Response:', data);
- HEAD
       setItems(data.map(item => ({ ...item, id: item._id })));
-      // Keep using local state for demo
-ae4ed825a09127380d155ab728c74276ee837ffc
     } catch (error) {
       console.error('Failed to fetch expenses:', error);
     } finally {
@@ -281,11 +278,7 @@ ae4ed825a09127380d155ab728c74276ee837ffc
           )}
         </div>
 
- HEAD
         <div className="space-y-6">
-=======
-        <div className="space-y-3">
- ae4ed825a09127380d155ab728c74276ee837ffc
           {items.length === 0 && (
             <div className="text-center py-12">
               <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -295,77 +288,6 @@ ae4ed825a09127380d155ab728c74276ee837ffc
               <p className="text-gray-400">Add your first expense to start tracking your budget</p>
             </div>
           )}
-HEAD
-          {Object.entries(
-            items.reduce((groups, item) => {
-              const category = item.category;
-              if (!groups[category]) {
-                groups[category] = [];
-              }
-              groups[category].push(item);
-              return groups;
-            }, {})
-          ).map(([category, categoryItems], categoryIndex) => {
-            const categoryTotal = categoryItems.reduce((sum, item) => sum + item.amount, 0);
-            return (
-              <motion.div
-                key={category}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: categoryIndex * 0.1 }}
-                className="bg-gray-50 p-6 rounded-xl border border-gray-200"
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center">
-                    <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mr-4 shadow-sm">
-                      <span className="text-2xl">
-                        {category.includes('Transportation') ? '✈️' :
-                         category.includes('Accommodation') ? '🏨' :
-                         category.includes('Food') ? '🍽️' :
-                         category.includes('Shopping') ? '🛍️' :
-                         category.includes('Activities') ? '🎯' : '🏷️'}
-                      </span>
-                    </div>
-                    <h4 className="text-xl font-semibold text-gray-900">{category}</h4>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-sm text-gray-600">Subtotal</p>
-                    <p className="text-lg font-bold text-gray-900">₹{categoryTotal.toLocaleString()}</p>
-                  </div>
-                </div>
-                <div className="space-y-3">
-                  {categoryItems.map((it, index) => (
-                    <motion.div
-                      key={it.id}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.3, delay: (categoryIndex * 0.1) + (index * 0.05) }}
-                      whileHover={{ scale: 1.01, transition: { duration: 0.2 } }}
-                      className="p-4 rounded-lg border border-gray-300 bg-white hover:bg-gray-50 transition-all duration-200 flex justify-between items-center"
-                    >
-                      <div className="flex items-center">
-                        <div>
-                          <h5 className="font-medium text-gray-900">{it.name}</h5>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-4">
-                        <span className="text-gray-900 font-semibold">₹{it.amount.toLocaleString()}</span>
-                        <motion.button
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                          onClick={() => deleteItem(it.id)}
-                          className="px-3 py-1 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors text-sm font-medium shadow-sm"
-                        >
-                          Remove
-                        </motion.button>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            );
-          })}
-=======
           {items.map((it, index) => (
             <motion.div
               key={it.id}
@@ -404,7 +326,6 @@ HEAD
               </div>
             </motion.div>
           ))}
->>>>>>> ae4ed825a09127380d155ab728c74276ee837ffc
         </div>
       </motion.div>
     </div>
