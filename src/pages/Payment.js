@@ -50,7 +50,7 @@ export default function Payment() {
       console.log('Creating trip with payload:', tripPayload);
       const result = await tripsAPI.create(tripPayload);
       console.log('Trip created successfully:', result);
-<<<<<<< HEAD
+HEAD
 
       // Store trip locally for My Trips page
       const localTrips = JSON.parse(localStorage.getItem('userTrips') || '[]');
@@ -60,11 +60,11 @@ export default function Payment() {
     } catch (error) {
       console.error('Error creating trip:', error);
       alert('Trip booked successfully! Check cluster logs for details.');
-=======
+
     } catch (error) {
       console.error('Error creating trip:', error);
       alert('Failed to save trip. Please check your login status.');
->>>>>>> ae4ed825a09127380d155ab728c74276ee837ffc
+ae4ed825a09127380d155ab728c74276ee837ffc
     }
   };
   
@@ -134,13 +134,13 @@ export default function Payment() {
   };
 
   if (paymentSuccess) {
-<<<<<<< HEAD
+HEAD
     // Navigate to my trips page with success message
     navigate('/my-trips', { state: { bookingSuccess: true, tripData } });
-=======
+
     // Navigate to trip confirmation page with trip data
     navigate('/trip-confirmation', { state: { tripData } });
->>>>>>> ae4ed825a09127380d155ab728c74276ee837ffc
+ ae4ed825a09127380d155ab728c74276ee837ffc
     return null;
   }
 
