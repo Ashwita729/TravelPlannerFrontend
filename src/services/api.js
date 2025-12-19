@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 const API_BASE_URL = 'https://travelplannerbackend-mcze.onrender.com/api';
+=======
+const API_BASE_URL = 'http://localhost:5001/api';
+>>>>>>> ae4ed825a09127380d155ab728c74276ee837ffc
 
 // Generic API call function
 const apiCall = async (endpoint, options = {}) => {
@@ -11,6 +15,7 @@ const apiCall = async (endpoint, options = {}) => {
       },
       ...options,
     });
+<<<<<<< HEAD
 
     console.log('API Response status:', response.status);
 
@@ -23,11 +28,20 @@ const apiCall = async (endpoint, options = {}) => {
       throw new Error('Authentication failed. Please log in again.');
     }
 
+=======
+    
+    console.log('API Response status:', response.status);
+    
+>>>>>>> ae4ed825a09127380d155ab728c74276ee837ffc
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
       throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> ae4ed825a09127380d155ab728c74276ee837ffc
     const data = await response.json();
     console.log('API Response data:', data);
     return data;
@@ -47,9 +61,18 @@ export const destinationsAPI = {
 // Trips API
 export const tripsAPI = {
   create: (tripData) => {
+<<<<<<< HEAD
     // Use simple endpoint for payment flow to avoid auth issues
     return apiCall('/trips/simple', {
       method: 'POST',
+=======
+    const token = localStorage.getItem('token');
+    return apiCall('/trips', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      },
+>>>>>>> ae4ed825a09127380d155ab728c74276ee837ffc
       body: JSON.stringify(tripData),
     });
   },
@@ -84,6 +107,7 @@ export const tripsAPI = {
 
 // Budget API
 export const budgetAPI = {
+<<<<<<< HEAD
   getExpenses: () => {
     const token = localStorage.getItem('token');
     return apiCall('/budgets', {
@@ -112,3 +136,14 @@ export const budgetAPI = {
     });
   },
 };
+=======
+  getExpenses: () => apiCall('/posts'),
+  addExpense: (expense) => apiCall('/posts', {
+    method: 'POST',
+    body: JSON.stringify(expense),
+  }),
+  deleteExpense: (id) => apiCall(`/posts/${id}`, {
+    method: 'DELETE',
+  }),
+};
+>>>>>>> ae4ed825a09127380d155ab728c74276ee837ffc

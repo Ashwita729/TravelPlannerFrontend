@@ -21,7 +21,11 @@ export default function BudgetPlanner() {
       setLoading(true);
       const data = await budgetAPI.getExpenses();
       console.log('Expenses API Response:', data);
+<<<<<<< HEAD
       setItems(data.map(item => ({ ...item, id: item._id })));
+=======
+      // Keep using local state for demo
+>>>>>>> ae4ed825a09127380d155ab728c74276ee837ffc
     } catch (error) {
       console.error('Failed to fetch expenses:', error);
     } finally {
@@ -278,7 +282,11 @@ export default function BudgetPlanner() {
           )}
         </div>
 
+<<<<<<< HEAD
         <div className="space-y-6">
+=======
+        <div className="space-y-3">
+>>>>>>> ae4ed825a09127380d155ab728c74276ee837ffc
           {items.length === 0 && (
             <div className="text-center py-12">
               <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -288,6 +296,7 @@ export default function BudgetPlanner() {
               <p className="text-gray-400">Add your first expense to start tracking your budget</p>
             </div>
           )}
+<<<<<<< HEAD
           {Object.entries(
             items.reduce((groups, item) => {
               const category = item.category;
@@ -357,6 +366,46 @@ export default function BudgetPlanner() {
               </motion.div>
             );
           })}
+=======
+          {items.map((it, index) => (
+            <motion.div
+              key={it.id}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.3, delay: index * 0.1 }}
+              whileHover={{ scale: 1.01, transition: { duration: 0.2 } }}
+              className="p-4 rounded-xl border border-gray-200 bg-gray-50 hover:bg-gray-100 transition-all duration-200 flex justify-between items-center"
+            >
+              <div className="flex items-center">
+                <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center mr-4 shadow-sm">
+                  <span className="text-lg">
+                    {it.category.includes('Transportation') ? '✈️' :
+                     it.category.includes('Accommodation') ? '🏨' :
+                     it.category.includes('Food') ? '🍽️' :
+                     it.category.includes('Shopping') ? '🛍️' :
+                     it.category.includes('Activities') ? '🎯' : '🏷️'}
+                  </span>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-900 text-lg">{it.name}</h4>
+                  <p className="text-sm text-gray-600">{it.category}</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <span className="text-gray-900 font-bold text-xl">₹{it.amount.toLocaleString()}</span>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => deleteItem(it.id)}
+                  className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors text-sm font-medium shadow-sm"
+                >
+                  Remove
+                </motion.button>
+              </div>
+            </motion.div>
+          ))}
+>>>>>>> ae4ed825a09127380d155ab728c74276ee837ffc
         </div>
       </motion.div>
     </div>
