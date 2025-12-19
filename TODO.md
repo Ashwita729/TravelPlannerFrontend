@@ -1,0 +1,4 @@
+- [ ] Group expenses by category in BudgetPlanner.js
+- [ ] Update the expense list JSX to display grouped clusters with subtotals
+- [ ] Ensure delete functionality works for individual expenses
+- [ ] Test the changes to verify clusters are displayed correctly
