@@ -1,14 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-<<<<<<< HEAD
 import { useNavigate, useLocation } from "react-router-dom";
 import { tripsAPI } from '../services/api';
 import { FaCalendarAlt, FaMapMarkerAlt, FaTrash, FaCheckCircle } from 'react-icons/fa';
-=======
-import { useNavigate } from "react-router-dom";
-import { tripsAPI } from '../services/api';
-import { FaCalendarAlt, FaMapMarkerAlt, FaTrash } from 'react-icons/fa';
->>>>>>> ae4ed825a09127380d155ab728c74276ee837ffc
 
 const destinations = [
   {
@@ -39,21 +33,15 @@ const destinations = [
 
 export default function MyTrips() {
   const navigate = useNavigate();
-<<<<<<< HEAD
   const location = useLocation();
   const [trips, setTrips] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-=======
-  const [trips, setTrips] = useState([]);
-  const [loading, setLoading] = useState(true);
->>>>>>> ae4ed825a09127380d155ab728c74276ee837ffc
 
   useEffect(() => {
     fetchTrips();
   }, []);
 
-<<<<<<< HEAD
   useEffect(() => {
     // Check if coming from successful booking
     if (location.state?.bookingSuccess) {
@@ -64,9 +52,6 @@ export default function MyTrips() {
       fetchTrips();
     }
   }, [location.state?.bookingSuccess]);
-
-=======
->>>>>>> ae4ed825a09127380d155ab728c74276ee837ffc
   const fetchTrips = async () => {
     try {
       console.log('Fetching trips...');
@@ -143,7 +128,6 @@ export default function MyTrips() {
   return (
     <div className="min-h-screen bg-slate-50 px-6 py-12">
 
-<<<<<<< HEAD
       {/* SUCCESS MESSAGE */}
       {showSuccessMessage && (
         <div className="max-w-5xl mx-auto mb-8">
@@ -159,30 +143,19 @@ export default function MyTrips() {
           </motion.div>
         </div>
       )}
-
-=======
->>>>>>> ae4ed825a09127380d155ab728c74276ee837ffc
       {/* HEADER */}
       <div className="max-w-5xl mx-auto text-center mb-16">
         <h1 className="text-3xl font-semibold text-slate-800">
           {trips.length === 0 ? "You haven't planned any trips yet" : "My Trips"}
         </h1>
         <p className="text-slate-600 mt-3 max-w-xl mx-auto">
-<<<<<<< HEAD
           {trips.length === 0
-=======
-          {trips.length === 0 
->>>>>>> ae4ed825a09127380d155ab728c74276ee837ffc
             ? "Start by choosing a destination. We'll help you plan everything step by step."
             : `You have ${trips.length} trip${trips.length > 1 ? 's' : ''} planned`
           }
         </p>
 
-<<<<<<< HEAD
         <button
-=======
-        <button 
->>>>>>> ae4ed825a09127380d155ab728c74276ee837ffc
           onClick={() => navigate('/plan')}
           className="mt-6 px-6 py-3 bg-blue-600 text-white rounded-md text-sm font-medium hover:bg-blue-700 transition"
         >

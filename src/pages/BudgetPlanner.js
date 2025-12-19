@@ -21,11 +21,10 @@ export default function BudgetPlanner() {
       setLoading(true);
       const data = await budgetAPI.getExpenses();
       console.log('Expenses API Response:', data);
-<<<<<<< HEAD
+ HEAD
       setItems(data.map(item => ({ ...item, id: item._id })));
-=======
       // Keep using local state for demo
->>>>>>> ae4ed825a09127380d155ab728c74276ee837ffc
+ae4ed825a09127380d155ab728c74276ee837ffc
     } catch (error) {
       console.error('Failed to fetch expenses:', error);
     } finally {
@@ -282,11 +281,11 @@ export default function BudgetPlanner() {
           )}
         </div>
 
-<<<<<<< HEAD
+ HEAD
         <div className="space-y-6">
 =======
         <div className="space-y-3">
->>>>>>> ae4ed825a09127380d155ab728c74276ee837ffc
+ ae4ed825a09127380d155ab728c74276ee837ffc
           {items.length === 0 && (
             <div className="text-center py-12">
               <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -296,7 +295,7 @@ export default function BudgetPlanner() {
               <p className="text-gray-400">Add your first expense to start tracking your budget</p>
             </div>
           )}
-<<<<<<< HEAD
+HEAD
           {Object.entries(
             items.reduce((groups, item) => {
               const category = item.category;
