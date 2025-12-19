@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 const API_BASE_URL = 'https://travelplannerbackend-mcze.onrender.com/api';
-=======
-const API_BASE_URL = 'http://localhost:5001/api';
->>>>>>> ae4ed825a09127380d155ab728c74276ee837ffc
 
 export const authAPI = {
   // Login function
